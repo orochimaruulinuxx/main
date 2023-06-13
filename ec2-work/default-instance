@@ -1,0 +1,20 @@
+onfigure the AWS Provider
+provider "aws" {
+  region = "us-east-1"                                         pkg
+}
+#creating the ec2 instance                                 h   pra
+resource "aws_instance" "app_server" {
+  ami           = "ami-0aedf6b1cb669b4c7"                  sh  REA
+  instance_type = "t2.micro"
+                                                               REA
+  tags = {
+    Name = "my-ec2-instance"
+    Environment  = "dev"
+
+  }
+}
+
+
+### Change the AMI if needed
+## https://cloud-images.ubuntu.com/locator/ec2/
+## https://www.centos.org/download/aws-images/

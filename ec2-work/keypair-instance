@@ -1,0 +1,29 @@
+#!/bin/bash
+  name        = "my-security-group"
+  description = "Allow SSH inbound traffic"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+# create the ec2 instance
+resource "aws_instance" "app_server" {
+  ami           = "ami-0aedf6b1cb669b4c7"
+  instance_type = "t2.micro"
+  key_name      = aws_key_pair.ec2_key.key_name
+  vpc_security_group_ids = [aws_security_group.ec2-security-group.id]
+
+  tags = {
+    Name = "my-ec2-instance"
+    Env  = "dev"
+  }
+}
+
+# print the ssh remote connection command
+output "ssh_command" {
+  value = "ssh -i my-ec2-keypair.pem centos@${aws_instance.app_server.public_ip}"
+}

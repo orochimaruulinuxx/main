@@ -1,0 +1,28 @@
+#!/bin/bash
+
+## N H DOM M DOW PATH-TO-SCRIPT <<<------
+## N H DOM M DOW PATH-TO-SCRIPT <<<------
+
+#--------------------------------------------------------------##-----------------------Essentials-----------------------------#
+
+###Schedule job to run evry min, 5min, 1hour, 2hours       
+#* * * * * /path-to-script
+#*/5 * * * * /path-to-script
+#0 * * * * /path-to-script  or ---->>>  @hourly /path-to-script
+#0 */2 * * * /path-to-script
+
+
+###Schedule Job to run daily, weekly, monthly, selected months
+#0 0 * * * /path/to-script
+#@weekly /path/to-script
+#@monthly /path/to-script
+#0 0 * jan,apr,jun * /path/to-script
+
+
+#-----------------------Main Jobs------------------------------#
+
+#This script will run at 8h30AM every 10th june
+#30 08 10 06 * /home/cron/full-backup.sh
+
+
+#This script will run every day twice a day (11AM and 4PM)

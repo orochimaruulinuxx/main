@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# create the security group to allow the ssh remote connection
+# here the instance will be created in the default VPC
+
+resource "aws_security_group" "ec2-security-group" {
+  name        = "my-security-group"
+  description = "Allow SSH inbound traffic"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
